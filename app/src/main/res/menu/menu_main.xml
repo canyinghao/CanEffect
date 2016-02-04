@@ -1,0 +1,37 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_1"
+        android:orderInCategory="100"
+        android:title="阴影效果"
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/action_2"
+        android:orderInCategory="100"
+        android:title="水波纹效果"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_3"
+        android:orderInCategory="100"
+        android:title="扩散效果"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_4"
+        android:orderInCategory="100"
+        android:title="画布画图"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_5"
+        android:orderInCategory="100"
+        android:title="xml画图"
+        app:showAsAction="never" />
+
+
+</menu>

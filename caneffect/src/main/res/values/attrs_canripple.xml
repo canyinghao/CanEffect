@@ -1,0 +1,12 @@
+<resources>
+    <declare-styleable name="CanRippleLayout">
+        <attr name="can_ripple_corner" format="dimension" />
+        <attr name="can_ripple_alpha" format="integer" />
+        <attr name="can_ripple_speed" format="float" />
+        <attr name="can_ripple_color" format="color" />
+
+
+    </declare-styleable>
+
+
+</resources>

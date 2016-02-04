@@ -1,0 +1,28 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.canyinghao.caneffect.demo">
+
+    <application android:allowBackup="true" android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher" android:supportsRtl="true"
+        android:name=".App"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.ShapeActivity" />
+        <activity android:name=".ui.RippleActivity" />
+        <activity android:name=".ui.WaterActivity" />
+        <activity android:name=".ui.ShadowActivity" />
+        <activity android:name=".ui.XmlActivity" />
+
+    </application>
+
+</manifest>

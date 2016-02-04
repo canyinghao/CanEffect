@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/colorPrimaryDark" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/round_shape" />
+
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/fl1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="#ff005555"
+             />
+
+        <TextView
+            android:id="@+id/view4"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="have clickListener"
+            android:background="@color/colorAccent" />
+
+
+        <TextView
+            android:id="@+id/view5"
+            android:layout_width="120dp"
+            android:gravity="center"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:text="no clickListener"
+            android:background="@color/colorAccent" />
+
+
+    </FrameLayout>
+
+
+</LinearLayout>
