@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Path;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -191,6 +192,9 @@ public class CanCircularRevealLayout extends FrameLayout {
 
             CanCircularRevealLayout layout = new CanCircularRevealLayout(view.getContext());
 
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
+                layout.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            }
 
             setParameter(layout);
 
