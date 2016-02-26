@@ -1,72 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-
-    <FrameLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <View
+
+        <LinearLayout
+
             android:id="@+id/view1"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@color/colorPrimaryDark" />
+            android:layout_height="wrap_content">
 
-    </FrameLayout>
+            <View
+
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@color/colorPrimaryDark" />
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/colorAccent" />
+
+        </LinearLayout>
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp">
-
-        <View
-            android:id="@+id/view2"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/round_shape" />
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/round_shape" />
 
 
-    </FrameLayout>
+        </FrameLayout>
 
 
-    <FrameLayout
-        android:id="@+id/fl1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <View
-            android:id="@+id/view3"
+        <FrameLayout
+            android:id="@+id/fl1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="500dp">
 
-            android:background="#ff005555"
-             />
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
 
-        <TextView
-            android:id="@+id/view4"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="have clickListener"
-            android:background="@color/colorAccent" />
+                android:background="#ff005555" />
 
-
-        <TextView
-            android:id="@+id/view5"
-            android:layout_width="120dp"
-            android:gravity="center"
-            android:layout_height="50dp"
-            android:layout_gravity="right"
-            android:text="no clickListener"
-            android:background="@color/colorAccent" />
+            <TextView
+                android:id="@+id/view4"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="have clickListener" />
 
 
-    </FrameLayout>
+            <TextView
+                android:id="@+id/view5"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="no clickListener" />
 
 
-</LinearLayout>
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

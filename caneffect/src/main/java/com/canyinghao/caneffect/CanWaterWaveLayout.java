@@ -135,7 +135,7 @@ public class CanWaterWaveLayout extends FrameLayout {
 
 
     public void setColors(int... colors) {
-        if (colors!=null){
+        if (colors != null) {
             this.colors = colors;
         }
 
@@ -200,6 +200,7 @@ public class CanWaterWaveLayout extends FrameLayout {
         invalidate();
     }
 
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent e) {
 
@@ -213,7 +214,10 @@ public class CanWaterWaveLayout extends FrameLayout {
             return super.onTouchEvent(e);
         }
 
-        childView.onTouchEvent(e);
+        if (childView != this) {
+            childView.onTouchEvent(e);
+        }
+
 
         switch (e.getAction()) {
 
@@ -264,6 +268,11 @@ public class CanWaterWaveLayout extends FrameLayout {
 
     private boolean isChildViewClick(View view, int x, int y) {
 
+        if (view.isEnabled() && (view.isClickable() || view.isLongClickable())) {
+
+            childView = view;
+            return true;
+        }
 
         if (view instanceof ViewGroup) {
             ViewGroup viewGroup = (ViewGroup) view;
@@ -313,11 +322,20 @@ public class CanWaterWaveLayout extends FrameLayout {
         if (isAnimeDowning) {
 
             drawWater(canvas, centerDownX, centerDownY, radiusDown, alphaDown);
+            if (alphaDown <= 5) {
+
+                isAnimeDowning = false;
+            }
         }
 
         if (isAnimeUping) {
 
             drawWater(canvas, centerUpX, centerUpY, radiusUp, alphaUp);
+
+            if (alphaUp <= 5) {
+
+                isAnimeUping = false;
+            }
         }
 
 

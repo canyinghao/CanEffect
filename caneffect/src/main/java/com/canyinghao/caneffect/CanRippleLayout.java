@@ -139,8 +139,20 @@ public class CanRippleLayout extends FrameLayout {
     }
 
 
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+
+        if (isAnime){
+            stopAnime();
+        }
+
+        return super.dispatchTouchEvent(ev);
+    }
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent e) {
+
 
         return true;
 
@@ -152,7 +164,10 @@ public class CanRippleLayout extends FrameLayout {
             return super.onTouchEvent(e);
         }
 
-        childView.onTouchEvent(e);
+        if (childView!=this){
+            childView.onTouchEvent(e);
+        }
+
 
         switch (e.getAction()) {
 
@@ -166,29 +181,11 @@ public class CanRippleLayout extends FrameLayout {
 
             case MotionEvent.ACTION_MOVE:
 
-                return true;
-
-            case MotionEvent.ACTION_UP:
+                return super.onTouchEvent(e);
             case MotionEvent.ACTION_CANCEL:
+            case MotionEvent.ACTION_UP:
 
-                if (ripple != null && ripple.isRunning()) {
-                    postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            if (ripple.isRunning()) {
-                                ripple.cancel();
-
-                            }
-                            isAnime = false;
-
-                            setRadius(0);
-                        }
-                    }, 500);
-                } else {
-                    isAnime = false;
-                    setRadius(0);
-                }
+                stopAnime();
 
                 break;
 
@@ -199,9 +196,36 @@ public class CanRippleLayout extends FrameLayout {
         return super.onTouchEvent(e);
     }
 
+    private void stopAnime() {
+        if (ripple != null && ripple.isRunning()) {
+            postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    if (ripple.isRunning()) {
+                        ripple.cancel();
+
+                    }
+                    isAnime = false;
+
+                    setRadius(0);
+                }
+            }, 500);
+        } else {
+            isAnime = false;
+            setRadius(0);
+        }
+    }
+
 
     private boolean isChildViewClick(View view, int x, int y) {
 
+
+        if (view.isEnabled() && (view.isClickable() || view.isLongClickable())){
+
+            childView = view;
+            return true;
+        }
 
         if (view instanceof ViewGroup) {
             ViewGroup viewGroup = (ViewGroup) view;
