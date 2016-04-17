@@ -6,7 +6,7 @@ android效果库，阴影效果、水纹效果、波纹效果、圆形显示过�
 
 ##添加依赖
 ```JAVA
-compile 'com.canyinghao:caneffect:1.0.1'
+compile 'com.canyinghao:caneffect:1.0.2'
 ```
 
 ## 使用方式 
@@ -42,6 +42,9 @@ public final class ViewAnimationUtils {
 ``` 
 **2. 使用方法**  
 其它的阴影效果、水纹效果、波纹效果，使用方法如出一辙。
+一些使用中的坑：
+1.不要给CanRippleLayout、CanWaterWaveLayout添加点击或长按事件，不然它的子view接受不到事件。
+2.如果使用了CanAdapter库，并且使用的是CanRVAdapter类，不要将CanRippleLayout、CanWaterWaveLayout放在item的最外层，CanRVAdapter的item的最外层view默认给了一个点击一个长按事件。
 ```JAVA
 public class MainActivity extends AppCompatActivity {
 
@@ -222,13 +225,13 @@ public class MainActivity extends AppCompatActivity {
 
 ![](https://avatars3.githubusercontent.com/u/12572840?v=3&s=460) 
 
-canyinghao: <canyinghao@hotmail.com>  
+canyinghao: 
+
+<canyinghao@hotmail.com>  
 
 [新浪微博](http://weibo.com/u/5670978460)
 
 [google+](https://plus.google.com/u/0/109542533436298291853)
-
-[twitter](https://twitter.com/canyinghao)
 
 ### License
 
