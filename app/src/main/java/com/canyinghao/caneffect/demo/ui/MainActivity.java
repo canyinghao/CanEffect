@@ -1,6 +1,6 @@
 package com.canyinghao.caneffect.demo.ui;
 
-import android.animation.Animator;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import com.canyinghao.caneffect.CanShadowDrawable;
 import com.canyinghao.caneffect.CanWaterWaveLayout;
 import com.canyinghao.caneffect.ViewAnimationUtils;
 import com.canyinghao.caneffect.demo.R;
-
+import com.nineoldandroids.animation.Animator;
 
 
 /**

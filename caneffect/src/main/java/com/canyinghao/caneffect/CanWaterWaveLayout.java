@@ -1,6 +1,5 @@
 package com.canyinghao.caneffect;
 
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -17,6 +16,8 @@ import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+
+import com.nineoldandroids.animation.ObjectAnimator;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 

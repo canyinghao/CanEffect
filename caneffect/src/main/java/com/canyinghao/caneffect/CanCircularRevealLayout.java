@@ -1,14 +1,17 @@
 package com.canyinghao.caneffect;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Path;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.ObjectAnimator;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -191,7 +194,12 @@ public class CanCircularRevealLayout extends FrameLayout {
 
             CanCircularRevealLayout layout = new CanCircularRevealLayout(view.getContext());
 
-            layout.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+
+            if(Build.VERSION.SDK_INT>=11){
+                layout.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            }
+
+
 
             setParameter(layout);
 
