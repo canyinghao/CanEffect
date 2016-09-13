@@ -6,7 +6,7 @@ android效果库，阴影效果、水纹效果、波纹效果、圆形显示过�
 
 ##添加依赖
 ```JAVA
-compile 'com.canyinghao:caneffect:1.0.2'
+compile 'com.canyinghao:caneffect:1.0.3'
 ```
 
 ## 使用方式 
