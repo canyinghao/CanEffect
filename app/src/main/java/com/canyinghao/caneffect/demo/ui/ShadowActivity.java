@@ -41,13 +41,14 @@ public class ShadowActivity extends AppCompatActivity {
         CanShadowDrawable.Builder.on(view2)
                 .bgColor(getResources().getColor(R.color.colorPrimaryDark))
                 .radius(dp2Px(5))
-                .shadowColor(Color.parseColor("#000000"))
+                .shadowColor(Color.parseColor("#aa000000"))
 
-                .shadowRange(dp2Px(3))
-                .offsetTop(dp2Px(2))
-                .offsetBottom(dp2Px(3))
-                .offsetLeft(dp2Px(3))
-                .offsetRight(dp2Px(3))
+                .corners(CanShadowDrawable.CORNER_TOP_RIGHT|CanShadowDrawable.CORNER_TOP_LEFT)
+                .shadowRange(dp2Px(5))
+                .offsetTop(dp2Px(5))
+                .offsetBottom(dp2Px(5))
+                .offsetLeft(dp2Px(5))
+                .offsetRight(dp2Px(5))
                 .create();
 
 

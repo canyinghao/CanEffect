@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
@@ -18,17 +19,26 @@ public class CanShadowDrawable extends Drawable {
 
 
     private Paint paint;
+    private Paint paintNoShadow;
 
 
     private RectF drawRect;
 //  圆角半径
     private float radius;
-
+    private int corners ;
 
     private float offsetLeft;
     private float offsetTop;
     private float offsetRight;
     private float offsetBottom;
+
+
+
+    public static final int CORNER_TOP_LEFT = 1;
+    public static final int CORNER_TOP_RIGHT = 1 << 1;
+    public static final int CORNER_BOTTOM_LEFT = 1 << 2;
+    public static final int CORNER_BOTTOM_RIGHT = 1 << 3;
+    public static final int CORNER_ALL = CORNER_TOP_LEFT | CORNER_TOP_RIGHT | CORNER_BOTTOM_LEFT | CORNER_BOTTOM_RIGHT;
 
 
     public CanShadowDrawable(int bgColor, float shadowRange, float shadowDx, float shadowDy, int shadowColor) {
@@ -43,6 +53,15 @@ public class CanShadowDrawable extends Drawable {
         paint.setColor(bgColor);
 //      设置阴影
         paint.setShadowLayer(shadowRange, shadowDx, shadowDy, shadowColor);
+
+        paintNoShadow = new Paint();
+        paintNoShadow.setAntiAlias(true);
+
+        paintNoShadow.setFilterBitmap(true);
+        paintNoShadow.setDither(true);
+        paintNoShadow.setStyle(Paint.Style.FILL);
+        paintNoShadow.setColor(bgColor);
+
 
         drawRect = new RectF();
     }
@@ -66,6 +85,11 @@ public class CanShadowDrawable extends Drawable {
         }
     }
 
+
+    public void setCorners(int corners) {
+        this.corners = corners;
+    }
+
     @Override
     public void draw(Canvas canvas) {
         canvas.drawRoundRect(
@@ -73,6 +97,24 @@ public class CanShadowDrawable extends Drawable {
                 radius, radius,
                 paint
         );
+
+        if(corners==0){
+            corners = CORNER_ALL;
+        }
+        int notRoundedCorners = corners ^ CORNER_ALL;
+        //哪个角不是圆角我再把你用矩形画出来
+        if ((notRoundedCorners & CORNER_TOP_LEFT) != 0) {
+            canvas.drawRect(offsetLeft, offsetTop, radius+offsetLeft, radius+offsetTop, paintNoShadow);
+        }
+        if ((notRoundedCorners & CORNER_TOP_RIGHT) != 0) {
+            canvas.drawRect(drawRect.right - radius , offsetTop, drawRect.right , radius+offsetTop, paintNoShadow);
+        }
+        if ((notRoundedCorners & CORNER_BOTTOM_LEFT) != 0) {
+            canvas.drawRect(offsetLeft, drawRect.bottom - radius, radius+offsetLeft, drawRect.bottom, paintNoShadow);
+        }
+        if ((notRoundedCorners & CORNER_BOTTOM_RIGHT) != 0) {
+            canvas.drawRect(drawRect.right - radius, drawRect.bottom - radius, drawRect.right, drawRect.bottom, paintNoShadow);
+        }
     }
 
 
@@ -133,7 +175,7 @@ public class CanShadowDrawable extends Drawable {
 
     @Override
     public int getOpacity() {
-        return 0;
+        return PixelFormat.TRANSLUCENT;
     }
 
 
@@ -151,6 +193,7 @@ public class CanShadowDrawable extends Drawable {
         private float offsetBottom;
 //       圆角半径
         private float radius;
+        private int corners;
 //       阴影范围
         private float shadowRange;
 //       阴影x轴偏移
@@ -213,6 +256,17 @@ public class CanShadowDrawable extends Drawable {
         }
 
         /**
+         * 指定圆角
+         * @param corners
+         * @return
+         */
+        public Builder corners(int corners) {
+            this.corners = corners;
+            return this;
+        }
+
+
+        /**
          * 圆角半径
          * @param radius
          * @return
@@ -221,6 +275,7 @@ public class CanShadowDrawable extends Drawable {
             this.radius = radius;
             return this;
         }
+
 
         /**
          * 阴影范围
@@ -295,6 +350,7 @@ public class CanShadowDrawable extends Drawable {
                     shadowViewDrawable.setOffsetBottom(offsetBottom);
                     shadowViewDrawable.setOffsetRight(offsetRight);
                     shadowViewDrawable.setRadius(radius);
+                    shadowViewDrawable.setCorners(corners);
 
                     shadowViewDrawable.setBounds(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
