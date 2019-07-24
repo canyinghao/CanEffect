@@ -9,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.annotation.FloatRange;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -105,7 +104,7 @@ public class CanRippleLayout extends FrameLayout {
     }
 
 
-    public void setRippleSpeed(@FloatRange(from = 0.0, to = 1.0) float rippleSpeed) {
+    public void setRippleSpeed( float rippleSpeed) {
         this.rippleSpeed = rippleSpeed;
     }
 

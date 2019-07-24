@@ -8,7 +8,6 @@ import android.graphics.Paint;
 import android.graphics.RadialGradient;
 import android.graphics.Rect;
 import android.graphics.Shader;
-import android.support.annotation.FloatRange;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.nineoldandroids.animation.ObjectAnimator;
+
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -130,7 +130,7 @@ public class CanWaterWaveLayout extends FrameLayout {
         this.waterRadius = waterRadius;
     }
 
-    public void setWaterSpeed(@FloatRange(from = 0.0, to = 1.0) float waterSpeed) {
+    public void setWaterSpeed( float waterSpeed) {
         this.waterSpeed = waterSpeed;
     }
 

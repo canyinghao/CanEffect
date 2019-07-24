@@ -1,9 +1,10 @@
 package com.canyinghao.caneffect.demo.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.canyinghao.caneffect.demo.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by yangjian on 16/2/2.
