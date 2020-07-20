@@ -1,9 +1,9 @@
 package com.canyinghao.caneffect;
 
 
+import android.animation.Animator;
 import android.view.View;
 
-import com.nineoldandroids.animation.Animator;
 
 /**
  * Created by canyinghao on 16/2/3.
